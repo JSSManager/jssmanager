@@ -555,9 +555,9 @@ function createDatabase()
 	mysql -h $dbHost -u $dbRoot -p$mysqlRootPwd -e "CREATE DATABASE $dbName;"
 	if [ "$?" == "0" ];
 		then
-			echo "Database $dbName created
+			echo "Database $dbName created"
 		else
-			echo "Error: Unable to create database $dbName
+			echo "Error: Unable to create database $dbName"
 	fi
 	
 }
@@ -891,7 +891,7 @@ function mainMenu()
 			echo "6 Restart Tomcat"
 			echo "7 Start Tomcat"
 			echo "8 Stop Tomcat"
-			echo "7 Exit"
+			echo "9 Exit"
 			echo
 
 			installType=""
@@ -948,7 +948,7 @@ function mainMenu()
 	
 	clear
 	
-	echo "JSS Manager v2.0"
+	echo "JSS Manager v2.0.1"
 	echo "Copyright (C) 2013-2014 kitzy.org"
     echo "JSS Manager comes with ABSOLUTELY NO WARRANTY."
     echo "This is free software, and you are welcome to modify or redistribute it"
