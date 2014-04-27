@@ -414,7 +414,7 @@ function updateWebapp()
 				then
 					echo "Updating $contextName..."
 						updateContext
-		   				tomcatRestartPrompt
+		   				#tomcatRestartPrompt
 				else
 					echo "$contextName will not be updated."
 			fi
@@ -494,7 +494,7 @@ function newcontext()
 					then
 						echo "Updating $contextName..."
 						updateContext
-						tomcatRestartPrompt
+						#tomcatRestartPrompt
 		   		elif [ $yesNo == "no" ];
 		   			then
 		   				echo "Aborting deployment."
@@ -536,7 +536,7 @@ function newcontext()
 					testDatabase
 					touchLogFiles
 					deployWebapp
-					tomcatRestartPrompt
+					#tomcatRestartPrompt
    			elif [ $yesNo == "no" ];
    				then
    					echo "Context will not be created."
@@ -948,7 +948,7 @@ function mainMenu()
 	
 	clear
 	
-	echo "JSS Manager v2.0.1"
+	echo "JSS Manager v2.0.2"
 	echo "Copyright (C) 2013-2014 kitzy.org"
     echo "JSS Manager comes with ABSOLUTELY NO WARRANTY."
     echo "This is free software, and you are welcome to modify or redistribute it"
