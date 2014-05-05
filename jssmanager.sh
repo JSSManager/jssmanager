@@ -124,7 +124,7 @@ function deleteMenu()
 	echo
 	read -p "Context Name: " contextName
 	
-	if [ ! -d "$tomcatPath/webapps/$contextName" ];
+	if [ ! -d "$tomcatPath/webapps/$contextName" ]
 		then
 			echo "$contextName is not a valid JSS context."
 			sleep 3
@@ -133,7 +133,7 @@ function deleteMenu()
 			echo "Would you like to continue?"
 			yesNo
 			
-			if [ $yesNo == "yes" ];
+			if [ $yesNo == "yes" ]
 				then
 					echo "Deleting $contextName..."
 					deleteWebapp
@@ -149,7 +149,7 @@ function deleteMenu()
 function deleteWebapp()
 {
 	rm -rf $tomcatPath/webapps/$contextName.war
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Deleted $tomcatPath/webapps/$contextName.war"
 		else
@@ -157,7 +157,7 @@ function deleteWebapp()
 	fi
 
 	rm -rf $tomcatPath/webapps/$contextName
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Deleted $tomcatPath/webapps/$contextName"
 		else
@@ -179,35 +179,35 @@ function readDatabaseSettings()
 	dbPass=""
 	
 	dbHost=$(sed -n 's|\s*<ServerName>\(.*\)</ServerName>|\1|p' $tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml)
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Database host is $dbHost"
 		else
 			echo "Unable to retrieve database host"
 	fi
 	dbName=$(sed -n 's|\s*<DataBaseName>\(.*\)</DataBaseName>|\1|p' $tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml)
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Database name is $dbName"
 		else
 			echo "Unable to retrieve database name"
 	fi
 	dbUser=$(sed -n 's|\s*<DataBaseUser>\(.*\)</DataBaseUser>|\1|p' $tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml)
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Database user is $dbUser"
 		else
 			echo "Unable to retrieve database user"
 	fi
 	dbPass=$(sed -n 's|\s*<DataBasePassword>\(.*\)</DataBasePassword>|\1|p' $tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml)
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Database password is $dbPass"
 		else
 			echo "Unable to retrieve database password"
 	fi
 	
-	if [ -z $dbHost ] || [ -z $dbName ] || [ -z $dbUser ] || [ -z $dbPass ];
+	if [ -z $dbHost ] || [ -z $dbName ] || [ -z $dbUser ] || [ -z $dbPass ]
 		then
 			echo
 			echo
@@ -215,7 +215,7 @@ function readDatabaseSettings()
 			echo "Updated webapp will be unable to connect to the database"
 			echo "Do you want to continue?"
 			yesNo
-			if [ $yesNo == "yes" ];
+			if [ $yesNo == "yes" ]
 				then
 					echo "Continuing update without database connection information"
 				else
@@ -231,23 +231,23 @@ function readDatabaseSettings()
 
 function touchLogFiles()
 {
-	until [ -d "$logPath" ];
+	until [ -d "$logPath" ]
 		do
 			echo "$logPath does not exist!"
 			echo "Would you like to create it?"
 				yesNo
 			
-			if [ $yesNo == "yes" ];
+			if [ $yesNo == "yes" ]
 				then
 					echo Creating $logPath
 					mkdir -p $logPath
-					if [ "$?" == "0" ];
+					if [ "$?" == "0" ]
 						then
 							echo "Created $logPath"
 						else
 							echo "Unable to create $logPath"
 					fi
-			elif [ $yesNo == "no" ];
+			elif [ $yesNo == "no" ]
 				then
 					echo
 					echo "Please specify a new directory for log files."
@@ -257,18 +257,18 @@ function touchLogFiles()
 			fi
 		done
 	
-	if [ ! -d "$logPath/$contextName" ];
+	if [ ! -d "$logPath/$contextName" ]
 		then
 			echo Creating $logPath/$contextName/
 			mkdir $logPath/$contextName
-			if [ "$?" == "0" ];
+			if [ "$?" == "0" ]
 				then
 					echo "Created $logPath/$contextName/"
 				else
 					echo "Error: Unable to create $logPath/$contextName/"
 			fi
 			chown tomcat7:tomcat7 $logPath/$contextName
-			if [ "$?" != "0" ];
+			if [ "$?" != "0" ]
 				then
 					echo "Error: unable to change ownership on $logPath/$contextName"
 			fi
@@ -276,18 +276,18 @@ function touchLogFiles()
 			echo $logPath/$contextName/ exists
 	fi
 	
-	if [ ! -f "$logPath/$contextName/JAMFSoftwareServer.log" ];
+	if [ ! -f "$logPath/$contextName/JAMFSoftwareServer.log" ]
 		then
 			echo Creating $logPath/$contextName/JAMFSoftwareServer.log
 			touch $logPath/$contextName/JAMFSoftwareServer.log
-			if [ "$?" == "0" ];
+			if [ "$?" == "0" ]
 				then
 					echo "Created JAMFSoftwareServer.log in $logPath/$contextName/"
 				else
 					echo "Error: Unable to create JAMFSoftwareServer.log in $logPath/$contextName/"
 			fi
 			chown tomcat7:tomcat7 $logPath/$contextName/JAMFSoftwareServer.log
-			if [ "$?" != "0" ];
+			if [ "$?" != "0" ]
 				then
 					echo "Error: Unable to change ownership on JAMFSoftwareServer.log in $logPath/$contextName/"
 			fi
@@ -295,18 +295,18 @@ function touchLogFiles()
 			echo $logPath/$contextName/JAMFSoftwareServer.log exists
 	fi
 	
-	if [ ! -f "$logPath/$contextName/jamfChangeManagement.log" ];
+	if [ ! -f "$logPath/$contextName/jamfChangeManagement.log" ]
 		then
 			echo Creating $logPath/$contextName/jamfChangeManagement.log
 			touch $logPath/$contextName/jamfChangeManagement.log
-			if [ "$?" == "0" ];
+			if [ "$?" == "0" ]
 				then
 					echo "Created jamfChangeManagement.log in $logPath/$contextName/"
 				else
 					echo "Error: Unable to create jamfChangeManagement.log in $logPath/$contextName/"
 			fi
 			chown tomcat7:tomcat7 $logPath/$contextName/jamfChangeManagement.log
-			if [ "$?" != "0" ];
+			if [ "$?" != "0" ]
 				then
 					echo "Error: Unable to change ownership on jamfChangeManagement.log in $logPath/$contextName/"
 			fi
@@ -322,7 +322,7 @@ function deployWebapp()
 {
 	echo Deploying Tomcat webapp
 	cp $webapp $tomcatPath/webapps/$contextName.war
-	if [ "$?" != "0" ];
+	if [ "$?" != "0" ]
 		then
 			echo "Error: unable to copy $webapp to $tomcatPath/webapps/"
 	fi
@@ -330,9 +330,9 @@ function deployWebapp()
 	# Sleep timer to allow tomcat app to deploy
 
 	counter=0
-	while [ $counter -lt 12 ];
+	while [ $counter -lt 12 ]
 		do
-			if [ ! -f "$tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml" ];
+			if [ ! -f "$tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml" ]
 				then
 					echo "Waiting for Tomcat webapp to deploy..."
 					sleep 5
@@ -342,7 +342,7 @@ function deployWebapp()
 			fi
 	done
 	
-	if [ ! -f "$tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml" ];
+	if [ ! -f "$tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml" ]
 		then
 			echo Something is wrong...
 			echo Tomcat webapp has not deployed.
@@ -356,26 +356,26 @@ function deployWebapp()
 	# Change log4j files to point logs to new log locations
 
 	echo Updating log4j files
-	if [ -f "$tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.JAMFCMFILE.properties" ];
+	if [ -f "$tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.JAMFCMFILE.properties" ]
 		then
 			sed -e "s@log4j.appender.JAMFCMFILE.File=.*@log4j.appender.JAMFCMFILE.File=$logPath/$contextName/jamfChangeManagement.log@" -e "s@log4j.appender.JAMF.File=.*@log4j.appender.JAMF.File=$logPath/$contextName/JAMFSoftwareServer.log@" -i $tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.JAMFCMFILE.properties
-			if [ "$?" != "0" ];
+			if [ "$?" != "0" ]
 				then
 					echo "Error: Unable to write settings to log4j.JAMFCMFILE.properties"
 			fi
 	fi
 	
-	if [ -f "$tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.JAMFCMSYSLOG.properties" ];
+	if [ -f "$tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.JAMFCMSYSLOG.properties" ]
 		then
 			sed "s@log4j.appender.JAMF.File=.*@log4j.appender.JAMF.File=$logPath/$contextName/JAMFSoftwareServer.log@" -i $tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.JAMFCMSYSLOG.properties
-			if [ "$?" != "0" ];
+			if [ "$?" != "0" ]
 				then
 					echo "Error: Unable to write settings to log4j.JAMFCMSYSLOG.properties"
 			fi
 	fi
 	
 	sed -e "s@log4j.appender.JAMFCMFILE.File=.*@log4j.appender.JAMFCMFILE.File=$logPath/$contextName/jamfChangeManagement.log@" -e "s@log4j.appender.JAMF.File=.*@log4j.appender.JAMF.File=$logPath/$contextName/JAMFSoftwareServer.log@" -i $tomcatPath/webapps/$contextName/WEB-INF/classes/log4j.properties
-	if [ "$?" != "0" ];
+	if [ "$?" != "0" ]
 		then
 			echo "Error: Unable to write settings to log4j.properties"
 	fi
@@ -383,7 +383,7 @@ function deployWebapp()
 
 	echo Writing database connection settings
 	sed -e "s@<ServerName>.*@<ServerName>$dbHost</ServerName>@" -e "s@<DataBaseName>.*@<DataBaseName>$dbName</DataBaseName>@" -e "s@<DataBaseUser>.*@<DataBaseUser>$dbUser</DataBaseUser>@" -e "s@<DataBasePassword>.*@<DataBasePassword>$dbPass</DataBasePassword>@" -i $tomcatPath/webapps/$contextName/WEB-INF/xml/DataBase.xml
-	if [ "$?" != "0" ];
+	if [ "$?" != "0" ]
 		then
 			echo "Error: Unable to write settings to DataBase.xml"
 	fi
@@ -401,7 +401,7 @@ function updateWebapp()
 	echo
 	read -p "Context Name: " contextName
 	
-	if [ ! -d "$tomcatPath/webapps/$contextName" ];
+	if [ ! -d "$tomcatPath/webapps/$contextName" ]
 		then
 			echo "$contextName is not a valid JSS context."
 			sleep 3
@@ -410,7 +410,7 @@ function updateWebapp()
 			echo "Would you like to continue?"
 			yesNo
 			
-			if [ $yesNo == "yes" ];
+			if [ $yesNo == "yes" ]
 				then
 					echo "Updating $contextName..."
 						updateContext
@@ -432,7 +432,7 @@ function updateAll()
 	echo "All existing JSS contexts will be updated."
 	echo "Are you sure you want to continue?"
 	yesNo
-	if [ $yesNo == "yes" ];
+	if [ $yesNo == "yes" ]
 		then
 			for dirs in $tomcatPath/webapps/*/
 				do
@@ -465,7 +465,7 @@ function displayAll()
 function updateContext()
 {
 	readDatabaseSettings
-	if [ $dbDump == "yes" ];
+	if [ $dbDump == "yes" ]
 		then
 			dumpDatabase
 	fi
@@ -485,17 +485,17 @@ function newcontext()
 	echo
 	read -p "Context Name: " contextName
 	
-	if [ -d "$tomcatPath/webapps/$contextName" ];
+	if [ -d "$tomcatPath/webapps/$contextName" ]
 		then
 			echo "$contextName already exists!"
 			echo "Would you like to upgrade this context?"
 			yesNo
-				if [ $yesNo == "yes" ];
+				if [ $yesNo == "yes" ]
 					then
 						echo "Updating $contextName..."
 						updateContext
 						#tomcatRestartPrompt
-		   		elif [ $yesNo == "no" ];
+		   		elif [ $yesNo == "no" ]
 		   			then
 		   				echo "Aborting deployment."
 		   		fi 
@@ -513,7 +513,7 @@ function newcontext()
 			echo
 			read -s -p "Database Password: " dbPass
 	
-			if [ $dbHost == "" ];
+			if [ $dbHost == "" ]
 				then
 					echo "Please enter the hostname or IP address of the database server."
 					echo
@@ -531,13 +531,13 @@ function newcontext()
 			echo "Would you like to continue?"
 			yesNo
 				
-			if [ $yesNo == "yes" ];
+			if [ $yesNo == "yes" ]
 				then
 					testDatabase
 					touchLogFiles
 					deployWebapp
 					#tomcatRestartPrompt
-   			elif [ $yesNo == "no" ];
+   			elif [ $yesNo == "no" ]
    				then
    					echo "Context will not be created."
    					sleep 3
@@ -553,7 +553,7 @@ function createDatabase()
 {
 	echo "Creating database $dbName..."
 	mysql -h $dbHost -u $dbRoot -p$mysqlRootPwd -e "CREATE DATABASE $dbName;"
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Database $dbName created"
 		else
@@ -568,7 +568,7 @@ function grantPermissions()
 {
 	echo "Granting permissions on database $dbName to user $dbUser at $serverAddress..."
 	mysql -h $dbHost -u $dbRoot -p$mysqlRootPwd -e "GRANT ALL ON $dbName.* TO $dbUser@$serverAddress IDENTIFIED BY '$dbPass';"
-	if [ "$?" == "0" ];
+	if [ "$?" == "0" ]
 		then
 			echo "Permissions granted"
 		else
@@ -595,14 +595,14 @@ function testMysqlRoot()
 
 function testDatabase()
 {
-	if [ $dbHost == "localhost" ];
+	if [ $dbHost == "localhost" ]
 		then
 			serverAddress="localhost"
 		else
 			serverAddress=`ifconfig $eth | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
 	fi
 	
-	if [ -z "$mysqlRootPwd" ];
+	if [ -z "$mysqlRootPwd" ]
 		then
 			read -s -p "Enter MySQL root password: " mysqlRootPwd
 	fi
@@ -614,32 +614,32 @@ function testDatabase()
 
 	dbTestUser=`mysqlshow --host=$dbHost --user=$dbUser --password=$dbPass $dbName| grep -v Wildcard | grep -o $dbName`
 	
-	if [ -z $dbTestUser ];
+	if [ -z $dbTestUser ]
 		then
 			dbTestRoot=`mysqlshow --host=$dbHost --user=$dbRoot --password=$mysqlRootPwd $dbName| grep -v Wildcard | grep -o $dbName`
-			if [ -z $dbTestRoot ];
+			if [ -z $dbTestRoot ]
 				then
 					echo "Database $dbName does not seem to exist."
 					echo "Would you like to create it?"
 					yesNo
-						if [ $yesNo == "yes" ];
+						if [ $yesNo == "yes" ]
 							then
 								createDatabase
 								grantPermissions
-						elif [ $yesNo == "no" ];
+						elif [ $yesNo == "no" ]
 							then
 								echo "Database will not be created."
 								echo "WARNING: Webapp may not be able to connect to database."
 						fi
-			elif [ $dbTestRoot == $dbName ];
+			elif [ $dbTestRoot == $dbName ]
 				then
 					echo "User $dbUser does not seem to have permission to access database $dbName."
 					echo "Would you like to grant permissions?"
 					yesNo
-						if [ $yesNo == "yes" ];
+						if [ $yesNo == "yes" ]
 							then
 								grantPermissions
-						elif [ $yesNo == "no" ];
+						elif [ $yesNo == "no" ]
 							then
 								echo "User will not be granted permission."
 								echo "WARNING: Webapp may not be able to connect to database."
@@ -652,7 +652,7 @@ function testDatabase()
 
 function dumpDatabase()
 {
-	if [ -z "$mysqlRootPwd" ];
+	if [ -z "$mysqlRootPwd" ]
 		then
 			read -s -p "Enter MySQL root password: " mysqlRootPwd
 	fi
@@ -660,15 +660,15 @@ function dumpDatabase()
 	testMysqlRoot
 	
 	dbTestRoot=`mysqlshow --host=$dbHost --user=$dbRoot --password=$mysqlRootPwd $dbName| grep -v Wildcard | grep -o $dbName`
-	if [ -z $dbTestRoot ];
+	if [ -z $dbTestRoot ]
 		then
 			echo "WARNING: Database $dbName does not appear to exist!"
 		else
-			if [ ! -d "$dbDumpPath/$dbName" ];
+			if [ ! -d "$dbDumpPath/$dbName" ]
 				then
 					echo "Creating $dbDumpPath/$dbName"
 					mkdir -p $dbDumpPath/$dbName
-					if [ "$?" != "0" ];
+					if [ "$?" != "0" ]
 						then
 							echo "Error: Unable to create $dbDumpPath/$dbName"
 							echo "Aborting!"
@@ -680,7 +680,7 @@ function dumpDatabase()
 			NOW="$(date +"%Y-%m-%d-%H-%M")"
 			echo "Dumping database $dbName to $dbDumpPath"
 			mysqldump -h $dbHost -u $dbRoot -p$mysqlRootPwd $dbName > $dbDumpPath/$dbName/$NOW.$dbName.sql
-			if [ "$?" == "0" ];
+			if [ "$?" == "0" ]
 				then
 					echo "Database dump successful"
 				else
@@ -693,14 +693,14 @@ function dumpDatabase()
 
 function dbDumpPrompt()
 {
-	if [ $dbDump != "no" ] && [ $dbDump != "yes" ];
+	if [ $dbDump != "no" ] && [ $dbDump != "yes" ]
 		then
 			echo "Would you like to backup the database(s) before proceeding?"
 			yesNo
-			if [ $yesNo == "yes" ];
+			if [ $yesNo == "yes" ]
 				then
 					dbDump="yes"
-			elif [ $yesNo == "no" ];
+			elif [ $yesNo == "no" ]
 				then
 					dbDump="no"
 			fi
@@ -715,7 +715,7 @@ function checkRoot()
 	
 	currentUser=$(whoami)
 
-	if [ $currentUser != root ];
+	if [ $currentUser != root ]
 		then
 			echo "ID10T Error: You must be root to run this script."
 			sleep 1
@@ -734,7 +734,7 @@ function checkWebapp()
 
 	echo "Checking for $webapp..."
 	
-	if [ ! -f $webapp ];
+	if [ ! -f $webapp ]
 		then
 			echo "$webapp not found!"
 			sleep 1
@@ -752,10 +752,10 @@ function checkTomcat()
 {
 	echo "Checking Tomcat installation type..."
 	
-	if [ -d "/var/lib/tomcat7" ];
+	if [ -d "/var/lib/tomcat7" ]
 		then
 			tomcatPath="/var/lib/tomcat7"
-	elif [ -d "/usr/local/jss/tomcat" ];
+	elif [ -d "/usr/local/jss/tomcat" ]
 		then
 			tomcatPath="/usr/local/jss/tomcat"
 	else
@@ -777,10 +777,10 @@ function tomcatRestartPrompt()
 	echo "A Tomcat restart is recommended."
 	echo "Would you like to restart Tomcat now?"
 	yesNo
-	if [ $yesNo == "yes" ];
+	if [ $yesNo == "yes" ]
 		then
    			bounceTomcat
-   	elif [ $yesNo == "no" ];
+   	elif [ $yesNo == "no" ]
    		then
    			echo "Tomcat will not be restarted."
    	fi
@@ -793,10 +793,10 @@ function bounceTomcat()
 {
 	echo "Restarting Tomcat..."
 	
-	if [ -d "/var/lib/tomcat7" ];
+	if [ -d "/var/lib/tomcat7" ]
 		then
 			service tomcat7 restart
-	elif [ -d "/usr/local/jss/tomcat" ];
+	elif [ -d "/usr/local/jss/tomcat" ]
 		then
 			/etc/init.d/jamf.tomcat7 restart
 	fi
@@ -807,10 +807,10 @@ function bounceTomcat()
 
 function startTomcat()
 {
-	if [ -d "/var/lib/tomcat7" ];
+	if [ -d "/var/lib/tomcat7" ]
     	then
             service tomcat7 start
-    elif [ -d "/usr/local/jss/tomcat" ];
+    elif [ -d "/usr/local/jss/tomcat" ]
     	then
             /etc/init.d/jamf.tomcat7 start
     fi
@@ -820,10 +820,10 @@ function startTomcat()
 
 function stopTomcat()
 {
-	if [ -d "/var/lib/tomcat7" ];
+	if [ -d "/var/lib/tomcat7" ]
     	then
             service tomcat7 stop
-    elif [ -d "/usr/local/jss/tomcat" ];
+    elif [ -d "/usr/local/jss/tomcat" ]
         	then
             	/etc/init.d/jamf.tomcat7 stop
     fi
@@ -836,23 +836,23 @@ function stopTomcat()
 function isTomcatRunning()
 {
     tomcatPID=`ps auxw | grep "${tomcatPath}" | grep -v grep | awk '{print $2}'`
-    if [ -z $tomcatPID ];
+    if [ -z $tomcatPID ]
         then
             echo "Tomcat does not appear to be running."
             echo "Would you like to start it?"
             yesNo
-            if [ $yesNo == "yes" ];
+            if [ $yesNo == "yes" ]
                 then
                 	startTomcat
-            elif [ $yesNo == "no" ];
+            elif [ $yesNo == "no" ]
                 then
                     echo "WARING: Webapps will not deploy properly if Tomcat is stopped!"
                     echo "Are you sure you want to continue without starting Tomcat?"
                     yesNo
-                    if [ $yesNo == "yes" ];
+                    if [ $yesNo == "yes" ]
                     	then
                             echo "You've been warned..."
-                    elif [ $yesNo == "no" ];
+                    elif [ $yesNo == "no" ]
                         then
                             isTomcatRunning
                     fi
