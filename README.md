@@ -72,7 +72,7 @@ dbHost - set this to the DNS name or IP of your MySQL server. If you're running 
 
 dbRoot - the MySQL root user.
 
-mysqlRootPwd - The MySQL root password. Leave this blank to be prompted eah time.
+mysqlRootPwd - The MySQL root password. Leave this blank to be prompted each time.
 
 webapp - set this to the location or your ROOT.war file. 
 
