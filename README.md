@@ -18,7 +18,7 @@ A multi-context environment will allow you to host multiple JSS contexts from a 
   - [Tomcat](#tomcat)
   - [JSS Webapp](#jss-webapp)
   - [Environment](#environment)
--[Use](#use) 
+- [Use](#use) 
 
 
 ## Features
