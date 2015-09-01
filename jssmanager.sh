@@ -3,7 +3,6 @@
 ##########################################################################################
 #
 #    JSS Manager
-#    Copyright (C) 2013-2014  kitzy.org
 #
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -26,21 +25,8 @@
 # NAME
 #  jssManager
 #
-# SYNOPSIS - How to use
-#
-# Place a copy of your ROOT.war file in the path specified in the webapp variable below
-# Run the script as root
-#
-# DESCRIPTION
-#
-# A multi-context deployment and management script for running the JSS on Linux
-# This script is tested on Ubuntu 12.04 LTS using Tomcat 7, MySQL 5.5 and JSS 9.x
-#
-# PREREQUISITES
-#
-# Tomcat 7
-# MySQL 5.5 or later
-# JSS 8.6 or later
+# DOCUMENTATION
+#   See https://github.com/JSSManager/jssmanager for documentation and information
 #
 ##########################################################################################
 
