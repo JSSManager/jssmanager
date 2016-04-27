@@ -901,10 +901,10 @@ function mainMenu()
            6)    bounceTomcat;
                mainMenu;;
 
-           7)    stopTomcat;
+           7)    startTomcat;
                mainMenu;;
 
-           8)    startTomcat;
+           8)    stopTomcat;
                mainMenu;;
 
            9)    echo Exiting...;
