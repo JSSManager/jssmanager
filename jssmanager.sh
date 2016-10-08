@@ -253,7 +253,7 @@ function touchLogFiles()
         else
           echo "Error: Unable to create $logPath/$contextName/"
       fi
-      chown tomcat7:tomcat7 $logPath/$contextName
+      chown tomcat8:tomcat8 $logPath/$contextName
       if [ "$?" != "0" ]
         then
           echo "Error: unable to change ownership on $logPath/$contextName"
@@ -272,7 +272,7 @@ function touchLogFiles()
         else
           echo "Error: Unable to create JAMFSoftwareServer.log in $logPath/$contextName/"
       fi
-      chown tomcat7:tomcat7 $logPath/$contextName/JAMFSoftwareServer.log
+      chown tomcat8:tomcat8 $logPath/$contextName/JAMFSoftwareServer.log
       if [ "$?" != "0" ]
         then
           echo "Error: Unable to change ownership on JAMFSoftwareServer.log in $logPath/$contextName/"
@@ -291,7 +291,7 @@ function touchLogFiles()
         else
           echo "Error: Unable to create jamfChangeManagement.log in $logPath/$contextName/"
       fi
-      chown tomcat7:tomcat7 $logPath/$contextName/jamfChangeManagement.log
+      chown tomcat8:tomcat8 $logPath/$contextName/jamfChangeManagement.log
       if [ "$?" != "0" ]
         then
           echo "Error: Unable to change ownership on jamfChangeManagement.log in $logPath/$contextName/"
@@ -444,7 +444,7 @@ function displayAll()
     done
   echo
   echo
-  read -s -p "Press [Enter] to reurn to the main menu"
+  read -s -p "Press [Enter] to return to the main menu"
   mainMenu
 }
 
@@ -738,15 +738,15 @@ function checkTomcat()
 {
   echo "Checking Tomcat installation type..."
 
-  if [ -d "/var/lib/tomcat7" ]
+  if [ -d "/var/lib/tomcat8" ]
     then
-      tomcatPath="/var/lib/tomcat7"
+      tomcatPath="/var/lib/tomcat8"
   elif [ -d "/usr/local/jss/tomcat" ]
     then
       tomcatPath="/usr/local/jss/tomcat"
   else
-    echo "Tomcat7 does not appear to be installed."
-    echo "Please install Tomcat7 before using this script."
+    echo "Tomcat8 does not appear to be installed."
+    echo "Please install Tomcat8 before using this script."
     echo "Exiting..."
     sleep 3
     exit 1
@@ -779,12 +779,12 @@ function bounceTomcat()
 {
   echo "Restarting Tomcat..."
 
-  if [ -d "/var/lib/tomcat7" ]
+  if [ -d "/var/lib/tomcat8" ]
     then
-      service tomcat7 restart
+      service tomcat8 restart
   elif [ -d "/usr/local/jss/tomcat" ]
     then
-      /etc/init.d/jamf.tomcat7 restart
+      /etc/init.d/jamf.tomcat8 restart
   fi
 }
 
@@ -793,12 +793,12 @@ function bounceTomcat()
 
 function startTomcat()
 {
-  if [ -d "/var/lib/tomcat7" ]
+  if [ -d "/var/lib/tomcat8" ]
       then
-            service tomcat7 start
+            service tomcat8 start
     elif [ -d "/usr/local/jss/tomcat" ]
       then
-            /etc/init.d/jamf.tomcat7 start
+            /etc/init.d/jamf.tomcat8 start
     fi
 }
 
@@ -806,12 +806,12 @@ function startTomcat()
 
 function stopTomcat()
 {
-  if [ -d "/var/lib/tomcat7" ]
+  if [ -d "/var/lib/tomcat8" ]
       then
-            service tomcat7 stop
+            service tomcat8 stop
     elif [ -d "/usr/local/jss/tomcat" ]
           then
-              /etc/init.d/jamf.tomcat7 stop
+              /etc/init.d/jamf.tomcat8 stop
     fi
 }
 
