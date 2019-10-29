@@ -16,8 +16,8 @@ A multi-context environment will allow you to host multiple Jamf Pro contexts fr
   - [Java](#java)
   - [MySQL](#mysql)
   - [Tomcat](#tomcat)
-  - [JSS Webapp](#jss-webapp)
-  - [unzip binary](#unzip binary)
+  - [Jamf Pro Webapp](#jamf-pro-webapp)
+  - [unzip binary](#unzip-binary)
   - [Environment](#environment)
 - [Use](#use) 
 
